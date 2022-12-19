@@ -1,4 +1,7 @@
-// let mgr;
+//big thank you to my friends for letting me take (unflattering) photos of them :)
+//all of the audio i used were from pixabay.com, other than the bell which is from envato.com and the hall noises which are from myfreemp3.to
+
+
 let startB;
 let sceneCount;
 let nameBoxLength = 200;
@@ -9,12 +12,22 @@ let cfMeet;
 let ccMeet;
 let sbMeet;
 
+let bgMusic;
+let hallNoise;
+let schoolBell;
+
 let video;
 let bubbles = [];
 let thorny = [];
 let roses = [];
 
 function preload() {
+	soundFormats('mp3');
+	bgMusic = loadSound("cute-and-fun-piano-with-strings-116746.mp3");
+	hallNoise = loadSound("School_Hallway_Ambience_Between_Classes.mp3");
+	schoolBell = loadSound("Sound_Effects_School_bell_HD_.mp3");
+	murderMusic = loadSound("tragedy-and-grief-114593.mp3");
+	
 	schoolFrontBg = loadImage("school_front_bg.png")
 	dayHall = loadImage("dayHall.png");
 	nextArrow = loadImage("nextArrow.png")
@@ -24,6 +37,8 @@ function preload() {
 	dayNurse = loadImage("dayNurse.png");
 	afterHall = loadImage("afterHall.png");
 	afterClass = loadImage("afterClass.png");
+	courtyard = loadImage("courtyard.png");
+	schoolGates = loadImage("schoolgates.png");
 	bubbleimg = loadImage("bubble.png");
 	loneRose = loadImage("lone_rose.png");
 	thorn1 = loadImage("thorny_vine.png");
@@ -34,12 +49,47 @@ function preload() {
 	cpAnnoy = loadImage("cpAnnoy.png");
 	cpAngry = loadImage("cpAngry.png");
 	cpEmb = loadImage("cpEmb.png");
+	
+	cfNeutral = loadImage("cfNeutral.png");
+	cfHappy = loadImage("cfHappy.png");
+	cfSad = loadImage("cfSad.png");
+	cfAnnoy = loadImage("cfAnnoy.png");
+	cfAngry = loadImage("cfAngry.png");
+	cfEmb = loadImage("cfEmb.png");
+	cfMur = loadImage("cfMur.png");
+	
+	ccNeutral = loadImage("ccNeutral.png");
+	ccHappy = loadImage("ccHappy.png");
+	ccSad = loadImage("ccSad.png");
+	ccAnnoy = loadImage("ccAnnoy.png");
+	ccAngry = loadImage("ccAngry.png");
+	ccEmb = loadImage("ccEmb.png");
+	ccMur = loadImage("ccMur.png");
+	
+	sbNeutral = loadImage("sbNeutral.png");
+	sbHappy = loadImage("sbHappy.png");
+	sbSad = loadImage("sbSad.png");
+	sbAngry = loadImage("sbAngry.png");
+	sbEmb = loadImage("sbEmb.png");
+	sbMur = loadImage("sbMur.png");
 
 }
 
 function setup() {
+	getAudioContext().suspend();
 	rectMode(CENTER);
 	createCanvas(800, 600);
+	bgMusic.play();
+	bgMusic.loop();
+	bgMusic.setVolume(0.4);
+	hallNoise.play();
+	hallNoise.loop();
+	hallNoise.setVolume(0);
+	schoolBell.play();
+	schoolBell.loop();
+	schoolBell.setVolume(0);
+	murderMusic.play();
+	murderMusic.setVolume(0);
 
 	option = 0;
 	scene = 1;
@@ -55,10 +105,10 @@ function setup() {
 	createCanvas(800, 600);
 	background(200);
 	video = createCapture(VIDEO);
-	video.size(width, height);
+	video.size(800,600);
 	video.hide();
 
-	for (let i = 0; i < 15; i++) {
+	for (let i = 0; i < 20; i++) {
 		bubbles[i] = new Bubble();
 	}
 	for (let i = 0; i < 30; i++) {
@@ -74,192 +124,14 @@ function draw() {
 	angleMode(DEGREES);
 
 	//scenes changed based on the scene number (as displayed by sceneCount)
-	if (sceneCount == 1) {
-		titleScreen();
-	}
-	if (sceneCount == 2) {
-		information();
-	}
-	if (sceneCount == 3) {
-		warning();
-	}
-	if (sceneCount == 4) {
-		inputName();
-	}
-	if (sceneCount == 5) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 6) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 7) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 8) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 9) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 10) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 11) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 12) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 13) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 14) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 15) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 16) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 17) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 18) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 19) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 20) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 21) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 22) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 23) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 24) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 25) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 26) {
-		schoolEnd();
-	}
-	if (sceneCount == 27) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 28) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 29) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 30) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 31) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 32) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 33) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 34) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 35) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 36) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 37) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 38) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 39) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 40) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 41) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 42) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 43) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 44) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 45) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 46) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 47) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 48) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 49) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 50) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 51) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 52) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 53) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 54) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 55) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 56) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 57) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 58) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 59) {
-		storyTime(sceneCount);
-	}
-	if (sceneCount == 60) {
-		storyTime(sceneCount);
-	}
-	print(sceneCount);
+userStartAudio();
+	storyTime(sceneCount);
+	//print(sceneCount);
 	//print(ccMeet);
 	textAlign(LEFT);
 	textSize(15);
-	text(mouseX, 10, 10);
-	text(mouseY, 10, 30);
+	// text(mouseX, 10, 10);
+	// text(mouseY, 10, 30);
 }
 
 function titleScreen() { //scene 1
@@ -329,7 +201,7 @@ function schoolEnd() { //scene 26
 	textFont(normalF, 15);
 	textAlign(CENTER,CENTER);
 	fill(255);
-	text("NEXT", 700, 500);
+	text("NEXT", 730, 530);
 }
 
 function goodEnding() {
@@ -376,11 +248,21 @@ function goodEnding() {
 // 	background(dayHall);
 // }
 
+//all of the scenes and their details are stored in this function
 function storyTime(sceneCount) {
-	if (sceneCount == 5) { //scene 5
+	if (sceneCount == 1) {
+		titleScreen();
+	}else if (sceneCount == 2) {
+		information();
+	}else if (sceneCount == 3) {
+		warning();
+	}else if (sceneCount == 4) {
+		inputName();
+	}else if (sceneCount == 5) { //scene 5
 		// enterName.hide();
 		// name.hide();
 		background(dayHall);
+		hallNoise.setVolume(1);
 		image(cpHappy,0,0);
 		textBox(1); //christina box
 		textAlign(LEFT);
@@ -394,6 +276,7 @@ function storyTime(sceneCount) {
 	} else if (sceneCount == 7) { //scene 7
 		background(dayHall);
 		image(cpNeutral,475,0);
+		image(cfHappy,0,0);
 		textBox(2);
 		textAlign(LEFT);
 		text("Hi " + "Y/N" + ", do you remember me?", 30, 460)
@@ -401,11 +284,14 @@ function storyTime(sceneCount) {
 	} else if (sceneCount == 8) { //scene 8
 		background(dayHall);
 		image(cpNeutral,0,0);
+		image(cfSad,475,0);
 		textBox(1);
 		textAlign(LEFT);
 		text("Uh, ok… let’s continue with the tour.", 30, 460)
 	} else if (sceneCount == 9) { //scene 9
 		background(dayClass);
+		hallNoise.setVolume(0.4);
+		schoolBell.setVolume(0.4);
 		image(cpHappy,0,0);
 		textBox(1);
 		textAlign(LEFT);
@@ -413,37 +299,44 @@ function storyTime(sceneCount) {
 		text("Take a good look around! You'll be here for the next year.", 30, 490);
 	} else if (sceneCount == 10) { //scene 10
 		background(dayClass);
+		schoolBell.setVolume(0);
 		image(cpNeutral,475,0);
+		image(ccHappy,0,0);
 		textBox(3);
 		textAlign(LEFT);
 		text("OMG! Who is this?", 30, 460);
 	} else if (sceneCount == 11) { //scene 11
 		background(dayClass);
 		image(cpAnnoy,475,0);
+		image(ccNeutral,0,0);
 		textBox(1);
 		textAlign(LEFT);
 		text("This is our new student.", 30, 460);
 	} else if (sceneCount == 12) { //scene 12
 		background(dayClass);
 		image(cpAnnoy,475,0);
+		image(ccNeutral,0,0);
 		textBox(0);
 		textAlign(LEFT);
 		text("Uh... *Christina looks annoyed...*", 30, 460);
 	} else if (sceneCount == 13) { //scene 13
 		background(dayClass);
 		image(cpAnnoy,475,0);
+		image(ccHappy,0,0);
 		textBox(3);
 		textAlign(LEFT);
 		text("Aww! You’re so cute! I’m Pari, what’s your name?", 30, 460);
 	} else if (sceneCount == 14) { //scene 14
 		background(dayClass);
 		image(cpAngry,475,0);
+		image(ccHappy,0,0);
 		textBox(1);
 		textAlign(LEFT);
 		text("Their name is Y/N! We need to finish the tour now.", 30, 460);
 	} else if (sceneCount == 15) { //scene 15
 		background(dayClass);
 		image(cpAnnoy,475,0);
+		image(ccAnnoy,0,0);
 		textBox(3);
 		textAlign(LEFT);
 		text("Damn, ok class pres. Well Y/N, come meet me after ", 30, 460);
@@ -459,6 +352,7 @@ function storyTime(sceneCount) {
 	} else if (sceneCount == 17) { //scene 17
 		background(dayClass);
 		image(cpNeutral,475,0);
+		image(ccHappy,0,0);
 		textBox(0);
 		textAlign(LEFT);
 		text("*Will you accept Pari's invite?*", 30, 460);
@@ -466,6 +360,7 @@ function storyTime(sceneCount) {
 	} else if (sceneCount == 18) { //scene 18
 		background(dayClass);
 		image(cpNeutral,475,0);
+		image(ccEmb,0,0);
 		textBox(3);
 		textAlign(LEFT);
 		text("Yay! Ok, I’ll um… see you then!", 30, 460);
@@ -478,13 +373,17 @@ function storyTime(sceneCount) {
 		text("Class is about to start, so I’ll show you one more room.", 30, 490);
 	} else if (sceneCount == 20) { //scene 20
 		background(dayNurse);
+		hallNoise.setVolume(0);
+		schoolBell.setVolume(0.4);
 		image(cpHappy,0,0);
 		textBox(1);
 		textAlign(LEFT);
 		text("Ok, so this is the nurse’s-", 30, 460);
 	} else if (sceneCount == 21) { //scene 21
 		background(dayNurse);
+		schoolBell.setVolume(0);
 		image(cpHappy,475,0);
+		image(sbNeutral,0,0);
 		textBox(0);
 		textAlign(LEFT);
 		text("Oof! I’m so sorry!", 30, 460);
@@ -494,17 +393,20 @@ function storyTime(sceneCount) {
 	} else if (sceneCount == 22) { //scene 22
 		background(dayNurse);
 		image(cpNeutral,475,0);
+		image(sbHappy,0,0);
 		textBox(5);
 		textAlign(LEFT);
 		text("*The scary guy smiles at you. It's... charming?*", 30, 460);
 	} else if (sceneCount == 23) { //scene 23
 		background(dayNurse);
 		image(cpAngry,475,0);
+		image(sbSad,0,0);
 		textBox(1);
 		textAlign(LEFT);
 		text("Oh, absolutely not. *Christina pulls you away*", 30, 460);
 	} else if (sceneCount == 24) { //scene 24
 		background(dayHall);
+		hallNoise.setVolume(1);
 		image(cpNeutral,0,0);
 		textBox(1);
 		textAlign(LEFT);
@@ -519,30 +421,40 @@ function storyTime(sceneCount) {
 		textBox(1);
 		textAlign(LEFT);
 		text("Ok, cool! See you then!", 30, 460);
+	} else if (sceneCount == 26) { //scene 27
+		schoolBell.setVolume(0.4);
+		hallNoise.setVolume(0);
+		schoolEnd();
 	} else if (sceneCount == 27) { //scene 27
 		background(afterClass);
+		schoolBell.setVolume(0);
+		image(ccNeutral,0,0);
 		textBox(3);
 		textAlign(LEFT);
 		text("*as you pack up, Pari finds you*", 30, 460);
 		text("Hey there Y/N…", 30, 490);
 	} else if (sceneCount == 28) { //scene 28
 		background(afterClass);
+		image(ccNeutral,0,0);
 		textBox(0);
 		textAlign(LEFT);
 		text("Hey Pari! What did you want to meet for?", 30, 460);
 	} else if (sceneCount == 29) { //scene 29
 		background(afterClass);
+		image(ccEmb,0,0);
 		textBox(3);
 		textAlign(LEFT);
 		text("Ahh well… you seem nice so I wanted to give you a gift?", 30, 460);
 	} else if (sceneCount == 30) { //scene 30
 		background(afterClass);
+		image(ccEmb,0,0);
 		textBox(3);
 		textAlign(LEFT);
 		text("Do you want to share a soda?", 30, 460);
 		optButtons();
 	} else if (sceneCount == 31) { //scene 31
 		background(afterClass);
+		image(ccHappy,0,0);
 		textBox(0);
 		textAlign(LEFT);
 		text("*You accept the soda and take a few sips, but", 30, 460);
@@ -550,11 +462,14 @@ function storyTime(sceneCount) {
 		text("Is something wr-", 30, 520);
 	} else if (sceneCount == 32) { //scene 32
 		background(afterClass);
+		bgMusic.setVolume(0);
+		murderMusic.setVolume(0.5);
+		image(ccMur,0,0);
 		textBox(0);
 		textAlign(LEFT);
 		text("*Your vision goes blurry. The last thing", 30, 460);
 		text("you hear is Pari’s telltale laugh as you collapse", 30, 490);
-		text("Why did she do it? Just for the laughs??*", 30, 490);
+		text("Why did she do it? Just for the laughs??*", 30, 520);
 	} else if (sceneCount == 33) { //scene 33
 		sodaDeath();
 	} else if (sceneCount == 34) { //scene 34
@@ -564,16 +479,20 @@ function storyTime(sceneCount) {
 		text("Oh, ok… I’ll see you then...", 30, 460);
 	} else if (sceneCount == 35) { //scene 35
 		background(afterHall);
+		schoolBell.setVolume(0);
 		textBox(0);
 		textAlign(LEFT);
 		text("*As you leave, you find Augustin*", 30, 460);
 	} else if (sceneCount == 36) { //scene 36
 		background(afterHall);
+		schoolBell.setVolume(0);
+		image(cfNeutral,0,0);
 		textBox(0);
 		textAlign(LEFT);
 		text("Hey Augustin, you wanted to catch up?", 30, 460);
 	} else if (sceneCount == 37) { //scene 37
 		background(afterHall);
+		image(cfEmb,0,0);
 		textBox(2);
 		textAlign(LEFT);
 		text("Yeah, but first I just wanted to say… I’ve been thinking", 30, 460);
@@ -581,6 +500,7 @@ function storyTime(sceneCount) {
 		text("never forgotten my best friend.", 30, 520);
 	} else if (sceneCount == 38) { //scene 38
 		background(afterHall);
+		image(cfEmb,0,0);
 		textBox(2);
 		textAlign(LEFT);
 		text("Will you accept these flowers to mark our new", 30, 460);
@@ -588,6 +508,7 @@ function storyTime(sceneCount) {
 		optButtons();
 	} else if (sceneCount == 39) { //scene 39
 		background(afterHall);
+		image(cfHappy,0,0);
 		textBox(0);
 		textAlign(LEFT);
 		text("Aww of course! Wow, these are beautiful! Are they roses?", 30, 460);
@@ -595,6 +516,9 @@ function storyTime(sceneCount) {
 		text("something pricking your skin…*", 30, 520);
 	} else if (sceneCount == 40) { //scene 40
 		background(afterHall);
+		bgMusic.setVolume(0);
+		murderMusic.setVolume(0.5);
+		image(cfMur,0,0);
 		textBox(0);
 		textAlign(LEFT);
 		text("*You suddenly notice the thorns of the roses have torn", 30, 460);
@@ -609,27 +533,31 @@ function storyTime(sceneCount) {
 		textAlign(LEFT);
 		text("It’s alright… maybe it’s too soon. I’m sorry, I need a minute.", 30, 460);
 	} else if (sceneCount == 43) { //scene 43
-		background(afterHall);
+		background(courtyard);
+		schoolBell.setVolume(0);
 		textBox(0);
 		textAlign(LEFT);
 		text("*You shake off what just happened and head to the", 30, 460);
 		text(" courtyard. You’re suddenly hit with deja vu as you bump", 30, 490);
 		text("into something again*", 30, 520);
 	} else if (sceneCount == 44) { //scene 44
-		background(afterHall);
+		background(courtyard);
+		image(sbNeutral,0,0);
 		textBox(0);
 		textAlign(LEFT);
 		text("*You’re face to face with Sumin*", 30, 460);
 		text("Oh, hello…", 30, 490);
 	} else if (sceneCount == 45) { //scene 45
-		background(afterHall);
+		background(courtyard);
+		image(sbNeutral,0,0);
 		textBox(4);
 		textAlign(LEFT);
 		text("Hey… sorry about earlier. I got flustered because that", 30, 460);
 		text("was the first time someone wasn't scared of me. I know", 30, 490);
-		text("there are rumors about me but I’m really not a bad guy.", 30, 490);
+		text("there are rumors about me but I’m really not a bad guy.", 30, 520);
 	} else if (sceneCount == 46) { //scene 46
-		background(afterHall);
+		background(courtyard);
+		image(sbEmb,0,0);
 		textBox(4);
 		textAlign(LEFT);
 		text("If you go out with me, I’ll do whatever you ask. My gang", 30, 460);
@@ -637,7 +565,8 @@ function storyTime(sceneCount) {
 		text("Will you let me take you on one date?", 30, 520);
 		optButtons();
 	} else if (sceneCount == 47) { //scene 47
-		background(afterHall);
+		background(courtyard);
+		image(sbHappy,0,0);
 		textBox(4);
 		textAlign(LEFT);
 		text("Really? Oh, you have no idea how happy that makes me.", 30, 460);
@@ -645,14 +574,16 @@ function storyTime(sceneCount) {
 	} else if (sceneCount == 48) { //scene 48
 		goodEnding();
 	} else if (sceneCount == 49) { //scene 49
-		background(afterHall);
+		background(courtyard);
+		image(sbSad,0,0);
 		textBox(4);
 		textAlign(LEFT);
 		text("Oh, that’s alright. You did just meet me, afterall. Maybe", 30, 460);
 		text(" one day. I can win you over. *He waves goodbye and you", 30, 490);
 		text(" think about how strange that interaction was*", 30, 520);
 	} else if (sceneCount == 50) { //scene 50
-		background(afterHall);
+		background(schoolGates);
+		schoolBell.setVolume(0);
 		image(cpNeutral,0,0);
 		textBox(0);
 		textAlign(LEFT);
@@ -660,26 +591,27 @@ function storyTime(sceneCount) {
 		text("waiting for you. You realize she would have waited for ", 30, 490);
 		text("you no matter what you said*", 30, 520);
 	} else if (sceneCount == 51) { //scene 51
-		background(afterHall);
+		background(schoolGates);
 		image(cpHappy,0,0);
 		textBox(1);
 		textAlign(LEFT);
 		text("Hey there Y/N! Heading home?", 30, 460);
 	} else if (sceneCount == 52) { //scene 52
-		background(afterHall);
+		background(schoolGates);
 		image(cpEmb,0,0);
 		textBox(0);
 		textAlign(LEFT);
 		text("Yeah, but did you want to explore the town together? I", 30, 460);
 		text("feel like it would be fun.", 30, 490);
 	} else if (sceneCount == 53) { //scene 53
-		background(afterHall);
+		background(schoolGates);
 		image(cpHappy,0,0);
 		textBox(1);
 		textAlign(LEFT);
 		text("I thought you would never ask.", 30, 460);
 	} else if (sceneCount == 54) { //scene 50
 		background(dayHall);
+		image(cfEmb,0,0);
 		image(cpNeutral,475,0);
 		textBox(2);
 		textAlign(LEFT);
@@ -687,12 +619,14 @@ function storyTime(sceneCount) {
 		text("forgotten me.", 30, 490);
 	} else if (sceneCount == 55) { //scene 55
 		background(dayHall);
+		image(cfEmb,0,0);
 		image(cpNeutral,475,0);
 		textBox(0);
 		textAlign(LEFT);
 		text("What? I could never forget my childhood best friend.", 30, 460);
 	} else if (sceneCount == 56) { //scene 56
 		background(dayHall);
+		image(cfHappy,0,0);
 		image(cpNeutral,475,0);
 		textBox(2);
 		textAlign(LEFT);
@@ -702,6 +636,7 @@ function storyTime(sceneCount) {
 	} else if (sceneCount == 57) { //scene 57
 		background(dayClass);
 		image(cpAnnoy,475,0);
+		image(ccSad,0,0);
 		textBox(3);
 		textAlign(LEFT);
 		text("Oh, alright. I see where I’m not wanted. I’ll hit the waves.", 30, 460);
@@ -711,10 +646,11 @@ function storyTime(sceneCount) {
 		textBox(1);
 		textAlign(LEFT);
 		text("Smart decision. Pari’s just a distraction, nothing more.", 30, 460);
-	  text(" Let’s continue the tour. Let’s continue the tour.", 30, 490);
+	  text(" Let’s continue the tour.", 30, 490);
 	} else if (sceneCount == 59) { //scene 59
 		background(dayNurse);
 		image(cpAnnoy,475,0);
+		image(sbAngry,0,0);
 		textBox(5);
 		textAlign(LEFT);
 		text("*The guy frowns harder. He did not seem to like that you", 30, 460);
@@ -1191,6 +1127,7 @@ function mouseReleased() //method that registers changes between scenes when eit
 
 
 function sodaDeath() {
+	//can't get the tint on the camera screen to work
 	tint(173, 108, 143);
 	background(200);
 
