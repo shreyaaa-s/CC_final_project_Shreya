@@ -4,11 +4,11 @@ class Backgrounds{
 
 	}
 
-	function preload(){
+	 preload(){
 		  schoolFrontBg = loadImage("images/school_front_bg.png")
 	}
 
-	function setting(option){
+	 setting(option){
 		if(option == 1){
 			background(schoolFrontBg);
 		}

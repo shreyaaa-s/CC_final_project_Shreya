@@ -36,7 +36,7 @@ function draw(){
 }
 
 function information(){
-  startB.remove();
+  startB.hide();
   background(0);
   fill(255);
   textFont(normalF,20);
@@ -60,7 +60,7 @@ function warning(){
 }
 
 function inputName(){
-  directionBtn.remove();
+  directionBtn.hide();
   background(schoolFrontBg);
   fill(0);
   textSize(50);
@@ -113,14 +113,15 @@ function textBox(chara){
 
 function storyTime(){
   if (scene = 1){
-    enterName.remove();
-    name.remove();
+    enterName.hide();
+    name.hide();
     background(dayHall);
     textBox(1);
     text("Hi " + name.value() + "! Welcome to Tandon High!", 30,460);
     text("I’m Christina, the class president. I’ll show you around.", 30,490);
     //nextScene();
-  } else if (scene = 2){
+  } else if (scene == 2){
+    print("please run this");
     textBox(1);
     text("Here, we have the-", 30,460);
   }
