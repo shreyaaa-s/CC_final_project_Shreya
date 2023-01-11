@@ -19,7 +19,7 @@ Remember, your decisions are important!
 
 ****************
 
-The main code for this project is located in restart_final_project/mySketch.js.
+The main code for this project is located in restart_final_project/mySketch.js. The html for the entire game can be found in index.html within the same folder.
 
 creative coding final script.pdf holds the script that was used to plan out the choices for this game, and Roundtable Presentation.pdf presents all of the initial ideas I had for this project, including the idea that I ended up continuing with.
 The Old Code folder holds the original code that I ended up scrapping and redoing.
