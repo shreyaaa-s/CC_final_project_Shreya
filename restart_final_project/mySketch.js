@@ -1,7 +1,6 @@
 //big thank you to my friends for letting me take (unflattering) photos of them :)
 //all of the audio i used were from pixabay.com, other than the bell which is from envato.com and the hall noises which are from myfreemp3.to
 
-
 let startB;
 let sceneCount;
 let nameBoxLength = 200;
@@ -135,19 +134,27 @@ userStartAudio();
 }
 
 function titleScreen() { //scene 1
+	fill(252, 174, 200);
+	stroke(120, 34, 62);
+	strokeWeight(4);
 	textFont(fancy, 70);
 	background(schoolFrontBg);
 	textAlign(CENTER);
 	text("DROPS IN THE WIND", width / 2, 200);
+	noStroke();
 	// startB = new Sprite();
 	// startB.pos = {x: width/2, y: height/2};
 	// if (keyIsPressed === true) {
 	// 	sceneManager.showScene( information );
 	// }
+	fill(252, 174, 200);
+	stroke(255);
 	square(width / 2, height / 2, 100, 5);
 	textFont(normalF, 20);
 	textAlign(CENTER, CENTER);
+	fill(0);
 	text("START", width / 2, height / 2);
+	noStroke();
 }
 
 function information() { //scene 2
@@ -194,8 +201,8 @@ function schoolEnd() { //scene 26
 	text("Class starts and the school day passes by quickly.", 10, 50);
 	text("As you packup, you remember the commitments you made,", 10, 100);
 	text("and realize you forgot to ask where to meet up.", 10, 150);
-	text("“Oh well, hopefully they’ll come looking for me on the way out”", 10, 250);
-	text("out.”", 10, 250);
+	text("“Oh well, hopefully they’ll come looking for me on the way", 10, 250);
+	text("out.”", 20, 280);
 	stroke(0);
 	square(700, 500, 60, 5);
 	textFont(normalF, 15);
